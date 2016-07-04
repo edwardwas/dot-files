@@ -1,3 +1,5 @@
+setxkbmap -layout gb -option ctrl:nocaps
+
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/bin/git-annex
 export PATH=$PATH:$HOME/.cabal/bin
