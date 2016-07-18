@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'DoxygenToolkit.vim'
+Plugin 'jceb/vim-orgmode'
 Plugin 'Raimondi/delimitMate'
 Plugin 'a.vim'
 Plugin 'altercation/vim-colors-solarized'
@@ -24,6 +25,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-speeddating'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
 
