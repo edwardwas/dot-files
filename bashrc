@@ -1,6 +1,11 @@
-setxkbmap -layout gb -option ctrl:nocaps
+unamestr=$(uname)
+
+if [[ "$unamestr" == 'Linux' ]]; then
+    setxkbmap -layout gb -option ctrl:nocaps
+fi
 
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.homebrew/bin
 export PATH=$PATH:$HOME/.local/bin/git-annex
 export PATH=$PATH:$HOME/.cabal/bin
 export PATH=$PATH:$HOME/.cargo/bin
