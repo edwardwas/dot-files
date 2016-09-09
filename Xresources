@@ -8,7 +8,7 @@ URxvt.scrollBar: false
 
  
 URxvt.iso14755: False
-URxvt*font: xft:Terminess Powerline:size=14
+URxvt*font: xft:Terminess Powerline:size=16
 !Urxvt.font: xft:ter-powerline
 !
 

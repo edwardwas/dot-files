@@ -44,6 +44,7 @@ myWorkspaces = map show [1..10 :: Int]
 myManageHook = composeAll
     [ title =? "floatMe" --> doFloat
     , title =? "MiniMetro" --> doFloat
+    , title =? "game-test" --> doFloat
     , manageDocks
     ]
 
