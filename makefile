@@ -1,14 +1,18 @@
 home = $(shell (echo $$HOME))
 pwd =  $(shell pwd)
 
-all: bash vim xmonad xmobar emacs xresources
+all: bash vim xmonad xmobar xresources
+
+powerline_fonts:
+	git clone https://github.com/powerline/fonts
+	bash powerline/install.sh
 
 bash:
 	ln -sf $(pwd)/bashrc $(home)/.bashrc
 	ln -sf $(pwd)/bash_profile $(home)/.bash_profile
 
-programs: yaourt
-	sudo pacman -S --needed ghc vim xmobar happy alex feh rxvt-unicode
+programs: 
+	sudo apt install -y ghc vim xmobar happy alex feh rxvt-unicode libx11-dev libxft-dev cabal-install libxrandr-dev
 	cabal update
 	cabal install xmonad xmonad-extras
 
@@ -16,21 +20,13 @@ xresources:
 	ln -sf $(pwd)/Xresources $(home)/.Xresources
 	xrdb -merge $(home)/.Xresources
 
-yaourt: package-query
-	git clone https://aur.archlinux.org/yaourt.git
-	cd yaourt && makepkg -si 
-
-package-query:
-	git clone https://aur.archlinux.org/package-query.git
-	cd package-query && makepkg -si
-
 xmobar:
 	ln -sf $(pwd)/xmobarrc $(home)/.xmobarrc
 
 $(home)/.emacs.d:
 	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
-emacs: yaourt $(home)/.emacs.d
+emacs: $(home)/.emacs.d
 	yaourt -S --needed emacs25-git
 	ln -sf $(pwd)/spacemacs $(home)/.spacemacs
 

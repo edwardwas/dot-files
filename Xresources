@@ -8,14 +8,9 @@ URxvt.scrollBar: false
 
  
 URxvt.iso14755: False
-URxvt*font: xft:Terminess Powerline:size=16
+URxvt*font: xft:Inconsolata:size=12
 !Urxvt.font: xft:ter-powerline
 !
-
-xterm*fontName: xft:Terminess Powerline
-xterm*fontSize: 200
-
- 
 
 !For url following
 !URxvt.perl-ext-common: default,matcher
