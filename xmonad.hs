@@ -3,6 +3,8 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Layout.LayoutScreens
+import XMonad.Layout.TwoPane
 import System.IO
 import XMonad.Layout.Spacing
 import XMonad.Hooks.SetWMName
@@ -19,7 +21,12 @@ flipOrientation Horizontal = Vertical
 
 startup :: X ()
 startup = do
+    let screen1Width = 1920
+        screen2Width = 1024
+        screen1Ratio = screen1Width / (screen1Width + screen2Width)
+        screen2Ratio = screen2Width / (screen1Width + screen2Width)
     spawn ".screenlayout/layout.sh && feh --bg-fill .image"
+    layoutScreens 2 $ Mirror $ Tall 2 0 screen1Ratio
     spawn "xrdb /home/edward/.Xresources"
     spawn "xmobar"
     spawn "stalonetray"
