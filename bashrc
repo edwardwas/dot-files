@@ -5,6 +5,7 @@ if [[ "$unamestr" == 'Linux' ]]; then
     alias ssteam="STEAM_RUNTIME=0 steam"
     alias upgrade="sudo apt update && sudo apt upgrade -y"
 fi
+alias rload="export RSTUDIO_WHICH_R=~/.homebrew/bin/R; cd $HOME/Desktop/RStudio.app/Contents/MacOS/; ./RStudio "
 
 
 export PATH=$HOME/.local/bin:$PATH
