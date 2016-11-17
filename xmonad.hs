@@ -25,6 +25,8 @@ startup = do
         screen1Ratio = screen1Width / (screen1Width + screen2Width)
         screen2Ratio = screen2Width / (screen1Width + screen2Width)
     spawn "xrdb /home/edward/.Xresources"
+    spawn "bash ~/.screenlayout/layout2.sh"
+    spawn "feh --bg-fill ~/.image"
 
 
 myLayout = gaps [(U,16)] $ avoidStruts (tiled ||| simpleTabbed ||| Mirror tiled )
