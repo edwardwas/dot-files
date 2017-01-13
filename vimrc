@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'DoxygenToolkit.vim'
+Plugin 'raichoo/purescript-vim'
 Plugin 'jceb/vim-orgmode'
 Plugin 'Raimondi/delimitMate'
 Plugin 'a.vim'
@@ -19,7 +20,6 @@ Plugin 'elzr/vim-json'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
-Plugin 'neovimhaskell/haskell-vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-abolish'
@@ -29,6 +29,7 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-fireplace'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
+Plugin 'alx741/vim-hindent'
 
 call vundle#end() 
 
@@ -82,3 +83,6 @@ let g:haskell_enable_static_pointers = 1
 let g:cabal_indent_section = 2
 
 let g:tex_conceal = ""
+
+let g:hindent_indent_size = 2
+let g:hindent_line_length = 68
