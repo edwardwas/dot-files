@@ -86,3 +86,5 @@ let g:tex_conceal = ""
 
 let g:hindent_indent_size = 2
 let g:hindent_line_length = 68
+
+let g:rustfmt_autosave = 1
