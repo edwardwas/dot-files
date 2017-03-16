@@ -29,6 +29,7 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-fireplace'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
+"Plugin 'nbouscal/vim-stylish-haskell'
 Plugin 'alx741/vim-hindent'
 
 call vundle#end() 
@@ -56,7 +57,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 set expandtab
-set tabstop=4
+set tabstop=2
 set shiftwidth=4
 
 noremap <Up> <NOP>
@@ -86,5 +87,8 @@ let g:tex_conceal = ""
 
 let g:hindent_indent_size = 2
 let g:hindent_line_length = 68
+let g:hindent_on_save = 1
 
 let g:rustfmt_autosave = 1
+
+noremap <F5> :w <CR> :! make <CR>
