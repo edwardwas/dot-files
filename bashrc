@@ -1,3 +1,5 @@
+#!/bin/bash
+
 unamestr=$(uname)
 
 if [[ "$unamestr" == 'Linux' ]]; then
@@ -6,6 +8,10 @@ if [[ "$unamestr" == 'Linux' ]]; then
     alias upgrade="sudo apt update && sudo apt upgrade -y"
 fi
 alias rload="export RSTUDIO_WHICH_R=~/.homebrew/bin/R; cd $HOME/Desktop/RStudio.app/Contents/MacOS/; ./RStudio "
+
+function toMp3 {
+    ffmpeg -i "$1" -vn -ar 44100 -ac 2 -ab 192k -f mp3 "${1%.*}.mp3"
+}
 
 
 export PATH=$HOME/.local/bin:$PATH
