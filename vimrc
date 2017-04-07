@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'DoxygenToolkit.vim'
+Plugin 'rhysd/vim-clang-format'
 Plugin 'raichoo/purescript-vim'
 Plugin 'jceb/vim-orgmode'
 Plugin 'Raimondi/delimitMate'
