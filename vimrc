@@ -31,7 +31,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
 "Plugin 'nbouscal/vim-stylish-haskell'
-Plugin 'alx741/vim-hindent'
+Plugin 'edwardwas/vim-hindent'
 
 call vundle#end() 
 
