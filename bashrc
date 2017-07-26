@@ -5,7 +5,7 @@ unamestr=$(uname)
 if [[ "$unamestr" == 'Linux' ]]; then
     setxkbmap -layout gb -option ctrl:nocaps
     alias ssteam="STEAM_RUNTIME=0 steam"
-    alias upgrade="sudo apt update && sudo apt upgrade -y"
+    alias upgrade="sudo apt update && sudo apt upgrade -y && cabal update"
 fi
 alias rload="export RSTUDIO_WHICH_R=~/.homebrew/bin/R; cd $HOME/Desktop/RStudio.app/Contents/MacOS/; ./RStudio "
 
