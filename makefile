@@ -12,7 +12,7 @@ bash:
 	ln -sf $(pwd)/bash_profile $(home)/.bash_profile
 
 programs: 
-	sudo apt install -y ghc vim xmobar happy alex feh rxvt-unicode libx11-dev libxft-dev cabal-install libxrandr-dev
+	sudo apt install -y ghc vim xmobar happy alex feh rxvt-unicode libx11-dev libxft-dev cabal-install libxrandr-dev emacs
 	cabal update
 	cabal install xmonad xmonad-extras
 
@@ -27,8 +27,7 @@ $(home)/.emacs.d:
 	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 emacs: $(home)/.emacs.d
-	yaourt -S --needed emacs25-git
-	ln -sf $(pwd)/spacemacs $(home)/.spacemacs
+	ln -sf $(pwd)/emacs $(home)/.emas
 
 $(home)/.vim/bundle/Vundle.vim:
 	git clone https://github.com/VundleVim/Vundle.vim.git $(home)/.vim/bundle/Vundle.vim
