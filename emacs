@@ -89,8 +89,17 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
   )
 
+(use-package helm
+  :ensure t
+  :config
+  (helm-mode 1)
+  )
+
+(use-package magit
+  :ensure t
+  )
+
+
 (setq exec-path (append exec-path '("/home/edward/.local/bin")))
-
-
 
 (set-face-attribute 'default nil :height 120)

@@ -1,7 +1,7 @@
 home = $(shell (echo $$HOME))
 pwd =  $(shell pwd)
 
-all: bash vim xmonad xmobar xresources
+all: bash vim xresources emacs
 
 powerline_fonts:
 	git clone https://github.com/powerline/fonts
@@ -14,7 +14,6 @@ bash:
 programs: 
 	sudo apt install -y ghc vim xmobar happy alex feh rxvt-unicode libx11-dev libxft-dev cabal-install libxrandr-dev emacs
 	cabal update
-	cabal install xmonad xmonad-extras
 
 xresources:
 	ln -sf $(pwd)/Xresources $(home)/.Xresources
@@ -26,7 +25,7 @@ xmobar:
 $(home)/.emacs.d:
 	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
-emacs: $(home)/.emacs.d
+emacs: 
 	ln -sf $(pwd)/emacs $(home)/.emas
 
 $(home)/.vim/bundle/Vundle.vim:
