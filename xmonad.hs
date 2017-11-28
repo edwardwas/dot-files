@@ -1,23 +1,23 @@
-import Solarized
+import           Solarized
 
-import Control.Concurrent.STM
-import System.IO
-import XMonad
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.SetWMName
-import XMonad.Layout.Gaps
-import XMonad.Layout.Spacing
-import XMonad.Layout.Tabbed
-import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Util.Run (spawnPipe)
+import           Control.Concurrent.STM
+import           System.IO
+import           XMonad
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.SetWMName
+import           XMonad.Layout.Gaps
+import           XMonad.Layout.Spacing
+import           XMonad.Layout.Tabbed
+import           XMonad.Util.EZConfig     (additionalKeys)
+import           XMonad.Util.Run          (spawnPipe)
 
 data Orientation
   = Vertical
   | Horizontal
   deriving (Eq, Show)
 
-flipOrientation Vertical = Horizontal
+flipOrientation Vertical   = Horizontal
 flipOrientation Horizontal = Vertical
 
 startup :: X ()
@@ -34,23 +34,22 @@ startup = do
 myLayout =
   gaps [(U, 16)] $
   avoidStruts (tiled ||| simpleTabbed ||| Mirror tiled)
-    --default tiling algorithm partitions the screen into two panes  
+    --default tiling algorithm partitions the screen into two panes
   where
     tiled = spacing 10 $ Tall nmaster delta ratio
-    --The default number of windows in the master pane  
+    --The default number of windows in the master pane
     nmaster = 1
     --Ratio that the master screen takes up
     ratio = 1 / 2
-    --Percent of screen to increment by when resizing panes  
+    --Percent of screen to increment by when resizing panes
     delta = 5 / 100
 
 myWorkspaces = map show [1 .. 10 :: Int]
 
 myManageHook =
   composeAll
-    [ title =? "floatMe" --> doFloat
-    , title =? "MiniMetro" --> doFloat
-    , title =? "game-test" --> doFloat
+    [ className =? "SimpleStrat" --> doFloat
+    , className =? "ExampleGame" --> doFloat
     , manageDocks
     ]
 
@@ -78,7 +77,7 @@ main = do
     , normalBorderColor = solarizedBase01
     , borderWidth = 2
     , workspaces = myWorkspaces
-    , terminal = "urxvt"
+    , terminal = "konsole"
     , startupHook = startup
     , logHook = myLogHook dzenPipe
     , layoutHook = myLayout
@@ -88,6 +87,7 @@ main = do
       , spawn "xscreensaver-command -lock")
     , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
     , ((mod4Mask .|. controlMask, xK_w), spawn "firefox")
+    , ((mod4Mask .|. controlMask, xK_e), spawn "emacs-25.325")
     , ((mod4Mask .|. controlMask, xK_v), spawn "pavucontrol")
     , ((mod4Mask, xK_f), swapOrientaion orieVar)
     ]
