@@ -8,6 +8,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'DoxygenToolkit.vim'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'LnL7/vim-nix'
 Plugin 'raichoo/purescript-vim'
 Plugin 'jceb/vim-orgmode'
 Plugin 'Raimondi/delimitMate'
@@ -30,8 +31,7 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-fireplace'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
-"Plugin 'nbouscal/vim-stylish-haskell'
-Plugin 'edwardwas/vim-hindent'
+Plugin 'nbouscal/vim-stylish-haskell'
 
 call vundle#end() 
 
@@ -85,10 +85,6 @@ let g:haskell_enable_static_pointers = 1
 let g:cabal_indent_section = 2
 
 let g:tex_conceal = ""
-
-let g:hindent_indent_size = 2
-let g:hindent_line_length = 68
-let g:hindent_on_save = 1
 
 let g:rustfmt_autosave = 1
 
