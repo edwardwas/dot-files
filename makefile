@@ -26,7 +26,7 @@ $(home)/.emacs.d:
 	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 emacs: 
-	ln -sf $(pwd)/emacs $(home)/.emas
+	ln -sf $(pwd)/init.el $(home)/.emacs.d/init.el
 
 $(home)/.vim/bundle/Vundle.vim:
 	git clone https://github.com/VundleVim/Vundle.vim.git $(home)/.vim/bundle/Vundle.vim

@@ -27,8 +27,7 @@ startup = do
       screen1Ratio = screen1Width / (screen1Width + screen2Width)
       screen2Ratio = screen2Width / (screen1Width + screen2Width)
   spawn "xrdb /home/edward/.Xresources"
-  spawn "bash ~/.screenlayout/layout2.sh"
-  spawn "feh --bg-fill ~/.image"
+  spawn "bash ~/.screenlayout/layout2.sh && feh --bg-fill ~/.image"
   setWMName "LG3D"
 
 myLayout =
@@ -50,6 +49,7 @@ myManageHook =
   composeAll
     [ className =? "SimpleStrat" --> doFloat
     , className =? "ExampleGame" --> doFloat
+    , className =? "floatMe" --> doFloat
     , manageDocks
     ]
 
