@@ -13,6 +13,10 @@ function toMp3 {
     ffmpeg -i "$1" -vn -ar 44100 -ac 2 -ab 192k -f mp3 "${1%.*}.mp3"
 }
 
+function youtube-stream {
+    youtube-dl -q -o- $1 | mplayer -cache 8192 -
+}
+
 
 export PATH=/snap/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
