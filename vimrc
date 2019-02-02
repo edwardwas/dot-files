@@ -33,6 +33,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
 Plugin 'nbouscal/vim-stylish-haskell'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'venantius/vim-cljfmt'
 
 call vundle#end() 
 

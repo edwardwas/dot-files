@@ -17,6 +17,10 @@ function youtube-stream {
     youtube-dl -q -o- $1 | mplayer -cache 8192 -
 }
 
+function crop-topgear {
+    ffmpeg -i "$1" -filter:v "crop=390:220:210:110" "${1%.*}.crop.${1##*.}"
+}
+
 
 export PATH=/snap/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
