@@ -26,6 +26,12 @@
 (use-package helm
              :ensure t)
 
+(use-package buffer-move
+  :ensure t)
+
+(use-package srefactor
+  :ensure t)
+
 (use-package highlight-parentheses
   :ensure t)
 
@@ -98,6 +104,9 @@
 
 (use-package cider
   :ensure t
+  :init
+  (setq cider-show-error-buffer 'only-in-repl)
+  (setq cider-show-error-buffer nil)
   )
 
 (use-package aggressive-indent
@@ -162,7 +171,7 @@
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
+    (srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

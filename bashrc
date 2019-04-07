@@ -5,7 +5,7 @@ unamestr=$(uname)
 if [[ "$unamestr" == 'Linux' ]]; then
     setxkbmap -layout gb -option ctrl:nocaps
     alias ssteam="STEAM_RUNTIME=0 steam"
-    alias upgrade="sudo apt update && sudo apt upgrade -y && cabal update && sudo snap refresh"
+    alias upgrade="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && cabal update && sudo snap refresh"
 fi
 alias rload="export RSTUDIO_WHICH_R=~/.homebrew/bin/R; cd $HOME/Desktop/RStudio.app/Contents/MacOS/; ./RStudio "
 
@@ -30,6 +30,7 @@ export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/bin/Elm-Platform/0.15.1/.cabal-sandbox/bin:$PATH
 export PATH=$HOME/.roswell/bin:$PATH
+#export PATH=$HOME/.local/kitty.app/bin:$PATH
 export RUST_SRC_PATH=$HOME/git_repos/rust/src
 
 . /home/edward/.nix-profile/etc/profile.d/nix.sh

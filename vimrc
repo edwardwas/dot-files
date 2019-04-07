@@ -106,3 +106,5 @@ au FileType * RainbowParenthesesLoadRound
 au FileType * RainbowParenthesesLoadBraces
 au FileType * RainbowParenthesesLoadSquare
 au FileType * RainbowParenthesesActivate
+
+highlight Pmenu ctermbg=darkred ctermfg=white guibg=black gui=bold

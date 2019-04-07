@@ -8,7 +8,7 @@ URxvt.scrollBar: false
 
  
 URxvt.iso14755: False
-URxvt*font: xft:Inconsolata:size=12
+URxvt*font: xft:Fira Code:size=12
 !Urxvt.font: xft:ter-powerline
 !
 
