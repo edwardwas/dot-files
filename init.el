@@ -15,16 +15,43 @@
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
 (add-hook 'ielm-mode-hook 'eldoc-mode)
+(add-hook 'text-mode-hook (lambda ()
+			    (flyspell-mode 1)))
 
 (eval-when-compile
   (require 'use-package))
 
+(use-package magit
+  :ensure t)
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
 (use-package evil
-             :config
-             (evil-mode t))
+  :config
+  (evil-mode t))
 
 (use-package helm
              :ensure t)
+
+(use-package projectile
+  :ensure t)
+
+(use-package helm-projectile
+  :bind ("C-p" . helm-projectile-fuzzy-match)
+  :ensure t)
 
 (use-package buffer-move
   :ensure t)
@@ -35,10 +62,11 @@
 (use-package highlight-parentheses
   :ensure t)
 
+
 (use-package solarized-theme
-             :ensure t
-             :config
-             (load-theme 'solarized-dark t))
+  :ensure t
+  :config
+  (load-theme 'solarized-dark t))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -46,8 +74,11 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
   )
 
+(use-package helm
+  :ensure t)
+
 (use-package org
-             :ensure t)
+  :ensure t)
 
 (use-package markdown-mode
   :ensure t
@@ -67,7 +98,7 @@
   (setq inferior-lisp-program "sbcl")
   )
 
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 140)
 
 (use-package haskell-mode
   :ensure t
@@ -107,6 +138,7 @@
   :init
   (setq cider-show-error-buffer 'only-in-repl)
   (setq cider-show-error-buffer nil)
+  (setq cider-use-tooltips t)
   )
 
 (use-package aggressive-indent
@@ -151,8 +183,14 @@
   (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
   )
 
-;(setq racer-cmd "~/.cargo/bin/racer")
-;(setq racer-rust-src-path "/home/edward/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+;; (use-package neotree
+;; ;;   :bind ("C-x C-f" . 'neotree)
+;; ;;   :config
+;; ;;   (setq neo-theme 'nerd)
+;; ;;   :ensure t)
+
+					;(setq racer-cmd "~/.cargo/bin/racer")
+					;(setq racer-rust-src-path "/home/edward/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
 
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
@@ -160,6 +198,11 @@
 
 (recentf-mode 1)
 (setq-default recentf-save-file "~/.emacs.d/recentf")
+
+(define-key key-translation-map (kbd "M-3") (kbd "#"))
+
+
+(add-to-list 'exec-path "/usr/local/bin")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -171,7 +214,7 @@
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
+    (exec-path-from-shell evil-surround neotree helm-projectile projectile srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

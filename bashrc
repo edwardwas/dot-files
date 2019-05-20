@@ -33,12 +33,15 @@ export PATH=$HOME/.roswell/bin:$PATH
 #export PATH=$HOME/.local/kitty.app/bin:$PATH
 export RUST_SRC_PATH=$HOME/git_repos/rust/src
 
-. /home/edward/.nix-profile/etc/profile.d/nix.sh
+. $HOME/.nix-profile/etc/profile.d/nix.sh
 
 alias cabalNixRegen="nix-shell -p cabal2nix --run \"cabal2nix . > default.nix\""
 
 export PATH=~/.npm-global/bin:$PATH
 
+source ~/.aws_keys
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/edward/.sdkman"
 [[ -s "/home/edward/.sdkman/bin/sdkman-init.sh" ]] && source "/home/edward/.sdkman/bin/sdkman-init.sh"
+
