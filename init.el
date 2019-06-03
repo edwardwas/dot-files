@@ -17,27 +17,24 @@
 (add-hook 'ielm-mode-hook 'eldoc-mode)
 (add-hook 'text-mode-hook (lambda ()
 			    (flyspell-mode 1)))
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
 
 (eval-when-compile
   (require 'use-package))
 
-(use-package magit
+(use-package transpose-frame
   :ensure t)
 
-(use-package exec-path-from-shell
+(use-package smex
   :ensure t
   :config
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
-
-(use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode 1))
-
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+  (smex-initialize)
+  :bind
+  ("M-x" . smex)
+  ("M-X" . smex-major-mode-commands)
+  ("C-c C-c M-x" . execute-extended-command))
 
 (use-package evil
   :config
@@ -74,9 +71,6 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
   )
 
-(use-package helm
-  :ensure t)
-
 (use-package org
   :ensure t)
 
@@ -103,13 +97,6 @@
 (use-package haskell-mode
   :ensure t
   )
-
-(use-package dante
-  :ensure t
-  :after haskell-mode
-  :commands 'dante-mode
-  :config
-  (add-hook 'haskell-mode-hook 'dante-mode))
 
 (use-package flycheck
   :ensure t
@@ -214,7 +201,7 @@
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (exec-path-from-shell evil-surround neotree helm-projectile projectile srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
+    (multiple-cursors md4rd transpose-frame smex solarized-theme ido-completing-read+ exec-path-from-shell evil-surround neotree helm-projectile projectile srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
