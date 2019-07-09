@@ -21,11 +21,53 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 (eval-when-compile
   (require 'use-package))
 
+;; JavaScript and TypeScript
+(use-package js2-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
+
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-formater-before-save)))
+
+(use-package web-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+  (setq web-mode-enable-current-element-highlight t))
+
+(use-package ace-window
+  :ensure t
+  :config
+  (global-set-key (kbd "M-o") 'ace-window)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setq aw-scope 'frame)
+  )
+
+(use-package exec-path-from-shell
+  :ensure t)
+
 (use-package transpose-frame
   :ensure t)
+
+(use-package column-enforce-mode
+  :ensure t)
+
+(use-package intero
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook 'intero-mode))
 
 (use-package smex
   :ensure t
@@ -126,6 +168,8 @@
   (setq cider-show-error-buffer 'only-in-repl)
   (setq cider-show-error-buffer nil)
   (setq cider-use-tooltips t)
+  :bind
+  (("C-c TAB" . cider-format-buffer))
   )
 
 (use-package aggressive-indent
@@ -180,7 +224,7 @@
 					;(setq racer-rust-src-path "/home/edward/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
 
 (menu-bar-mode -1)
-(toggle-scroll-bar -1)
+(scroll-bar-mode -1)
 (tool-bar-mode -1)
 
 (recentf-mode 1)
@@ -199,9 +243,10 @@
  '(custom-safe-themes
    (quote
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (multiple-cursors md4rd transpose-frame smex solarized-theme ido-completing-read+ exec-path-from-shell evil-surround neotree helm-projectile projectile srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
+    (column-enforce-mode centered-window web-mode tide hindent intero multiple-cursors md4rd transpose-frame smex solarized-theme ido-completing-read+ exec-path-from-shell evil-surround neotree helm-projectile projectile srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
