@@ -27,6 +27,32 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package magit
+  :ensure t)
+
+(use-package forge
+  :after magit)
+
+(use-package github-review
+  :after forge)
+
+(use-package parinfer
+  :ensure t
+  :bind
+  (("C-," . parinfer-toggle-mode))
+  :init
+  (progn
+    (setq parinfer-extensions
+          '(defaults       ; should be included.
+            pretty-parens  ; different paren styles for different modes.
+            evil           ; If you use Evil.
+            smart-yank))   ; Yank behavior depend on mode.
+    (add-hook 'clojure-mode-hook #'parinfer-mode)
+    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'scheme-mode-hook #'parinfer-mode)
+    (add-hook 'lisp-mode-hook #'parinfer-mode)))
+
 ;; JavaScript and TypeScript
 (use-package js2-mode
   :ensure t
@@ -53,6 +79,12 @@
   (global-set-key (kbd "M-o") 'ace-window)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (setq aw-scope 'frame)
+  )
+
+(use-package ac-emoji
+  :config
+  (add-hook 'markdown-mode-hook 'ac-emoji-setup)
+  (add-hook 'git-commit-mode-hook 'ac-emoji-setup)
   )
 
 (use-package exec-path-from-shell
@@ -235,6 +267,11 @@
 
 (add-to-list 'exec-path "/usr/local/bin")
 
+;; ATL Stuff
+
+(load "/Users/edward/git_repos/nuvo/atl-lsp/emacs/atl-mode.el")
+(setq atl-lsp-jar "/Users/edward/git_repos/nuvo/atl-lsp/target/atl-lsp-0.1.0-SNAPSHOT-standalone.jar")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -246,7 +283,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (column-enforce-mode centered-window web-mode tide hindent intero multiple-cursors md4rd transpose-frame smex solarized-theme ido-completing-read+ exec-path-from-shell evil-surround neotree helm-projectile projectile srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
+    (parinfer lsp-mode evil-cleverparens github-review forge clj-refactor ac-emoji dark-souls column-enforce-mode centered-window web-mode tide hindent intero multiple-cursors md4rd transpose-frame smex solarized-theme ido-completing-read+ exec-path-from-shell evil-surround neotree helm-projectile projectile srefactor-lisp srefactor buffer-move highlight-parentheses hightlight-parentheses lispy magit rainbow-delimiters flycheck-rust racer-mode eldoc-eval racer cargo rust-mode helm-spotify-plus helm-spotify-plus0 helm-spotify aggressive-fill-paragraph slime-company slime cider flycheck-inline telephone-line dante solarized-them use-package helm evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
