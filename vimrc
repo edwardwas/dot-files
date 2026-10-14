@@ -12,7 +12,6 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'ziglang/zig.vim'
 Plugin 'LnL7/vim-nix'
 Plugin 'raichoo/purescript-vim'
-Plugin 'jceb/vim-orgmode'
 Plugin 'Raimondi/delimitMate'
 Plugin 'a.vim'
 Plugin 'altercation/vim-colors-solarized'
@@ -32,9 +31,11 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-fireplace'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/Align'
-Plugin 'nbouscal/vim-stylish-haskell'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'venantius/vim-cljfmt'
+Plugin 'sdiehl/vim-ormolu'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'vmchale/dhall-vim'
+Plugin 'aklt/plantuml-syntax'
 
 call vundle#end() 
 
@@ -54,6 +55,8 @@ let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++ -L ~/.local/lib -I ~/.local/include'
+
+let g:ormolu_options=["-o -XTypeApplications", "-o -XPatternSynonyms"]
 
 set expandtab
 set tabstop=2
@@ -109,3 +112,4 @@ au FileType * RainbowParenthesesLoadSquare
 au FileType * RainbowParenthesesActivate
 
 highlight Pmenu ctermbg=darkred ctermfg=white guibg=black gui=bold
+

@@ -9,22 +9,9 @@ if [[ "$unamestr" == 'Linux' ]]; then
 fi
 alias rload="export RSTUDIO_WHICH_R=~/.homebrew/bin/R; cd $HOME/Desktop/RStudio.app/Contents/MacOS/; ./RStudio "
 
-function toMp3 {
-    ffmpeg -i "$1" -vn -ar 44100 -ac 2 -ab 192k -f mp3 "${1%.*}.mp3"
-}
-
-function youtube-stream {
-    youtube-dl -q -o- $1 | mplayer -cache 8192 -
-}
-
-function crop-topgear {
-    ffmpeg -i "$1" -filter:v "crop=390:220:210:110" "${1%.*}.crop.${1##*.}"
-}
-
 alias tmux="TERM=screen-256color-bce tmux"
 
 
-export PATH=/snap/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.homebrew/bin:$PATH
 export PATH=$HOME/.local/bin/git-annex:$PATH
@@ -32,18 +19,47 @@ export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/bin/Elm-Platform/0.15.1/.cabal-sandbox/bin:$PATH
 export PATH=$HOME/.roswell/bin:$PATH
-#export PATH=$HOME/.local/kitty.app/bin:$PATH
 export RUST_SRC_PATH=$HOME/git_repos/rust/src
-
-. $HOME/.nix-profile/etc/profile.d/nix.sh
-
-alias cabalNixRegen="nix-shell -p cabal2nix --run \"cabal2nix . > default.nix\""
-
 export PATH=~/.npm-global/bin:$PATH
 
-source ~/.aws_keys
+#. $HOME/.nix-profile/etc/profile.d/nix.sh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/edward/.sdkman"
-[[ -s "/home/edward/.sdkman/bin/sdkman-init.sh" ]] && source "/home/edward/.sdkman/bin/sdkman-init.sh"
+#alias cabalNixRegen="nix-shell -p cabal2nix --run \"cabal2nix . > default.nix\""
+
+alias clean-git="git branch | grep -v '^*' | xargs git branch -d"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$PATH:$HOME/.rvm/bin"
+
+source "$HOME/.secrets.sh"
+. "$HOME/.cargo/env"
+
+function rdss-header {
+  OFFSET=$(head -c 4 $1 | od -t d4 -An --endian=big);
+  tail -c +5 $1 | head -c $OFFSET | jq
+}
+
+function pretty-json {
+  for d in $@; do
+      echo "Making $d pretty"
+      cat $d | jq . > $d.pretty && mv $d.pretty $d;
+  done
+}
+
+function pretty-xml {
+  for d in $@; do
+      echo "Making $d pretty";
+      xmllint --format $d > $d.pretty && mv $d.pretty $d;
+  done
+}
+
+function fix-docker {
+    sudo ln -s $HOME/.docker/run/docker.sock /var/run/docker.sock
+}
+
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/edward/.lmstudio/bin"
+# End of LM Studio CLI section
 
